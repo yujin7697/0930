@@ -99,8 +99,9 @@ public class BoardService {
 
         if (boardOptional.isPresent()) {
             Board board = boardOptional.get();
-            // 게시물의 이미지 파일들을 삭제
-            deleteImageFiles(board.getDirpath());
+            if(board.getDirpath()!=null)
+                // 게시물의 이미지 파일들을 삭제
+                deleteImageFiles(board.getDirpath());
             // 게시물 삭제
             boardRepository.delete(board);
             return true;
@@ -109,6 +110,7 @@ public class BoardService {
     }
     private void deleteImageFiles(String dirPath){
         File dir = new File(dirPath);
+        System.out.println("dir : "+dir);
         if (dir.exists() && dir.isDirectory()) {
             File[] files = dir.listFiles();
             if (files != null) {
