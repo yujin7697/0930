@@ -158,4 +158,19 @@ public class BoardController {
         }
     }
 
+    @GetMapping("/read/{number}")
+    public String read(@PathVariable("number") Long number, Model model){
+        log.info("GET /read/"+number);
+
+        Optional<Board> boardOptional = boardRepository.findByNum(number);
+
+        if(boardOptional.isPresent()){
+            Board board = boardOptional.get();
+            model.addAttribute("board",board);
+            return "read";
+        }else{
+            return "error";
+        }
+    }
+
 }

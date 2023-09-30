@@ -244,7 +244,9 @@ header{
                          th:src="@{file:///C:/upload/user1/0ccb83f9-129e-46de-b4f4-b046a82b833d/${board.dirpath}/${board.filename}}"
                          alt="Thumbnail" width="200" height="auto" class="thumbnail">
                 </div>
-                <div id=board_contents class="contents" th:text="${board.contents}">contents</div>
+                <a th:href="'/read/' + ${board.number}">
+                    <div id=board_contents class="contents" th:text="${board.contents}">contents</div>
+                </a>
                 <div class="date-box">
                     <div th:text="${board.date}">date</div>
                     <div class="hits-like">
