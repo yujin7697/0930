@@ -144,4 +144,12 @@ public class BoardService {
         }
     }
 
+    @Transactional(rollbackFor = SQLException.class)
+    public void hits_count(Long number){
+        System.out.println("조회수 카운트 할거임!?!??!?!");
+        Board board = boardRepository.findByNum(number).get();
+        board.setHits(board.getHits()+1);
+        boardRepository.save(board);
+    }
+
 }
