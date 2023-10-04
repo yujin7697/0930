@@ -65,7 +65,6 @@ public class BoardController {
 
         List<Board> list = boardRepository.findAll();
         model.addAttribute("board", list);
-
         return list;
     }
 
